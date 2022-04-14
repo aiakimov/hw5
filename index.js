@@ -38,13 +38,11 @@ var _ = require('lodash');
 
 const task1 = _.findIndex(data1, { "age": 23 });
 const task2 = _.concat(data1, data2);
-const task3 = _.pick(data1[0], ["name", "email"]);
+const task3 = _.omit(data1[0], ["age"]);
 
 //superTask (???)
 
 const user = data2[0];
 
-const newUser = {
-    "age": user.age,
-    "name": user.name
-};
+const newUser = Object.fromEntries(Object.entries(user).filter(arr => arr[0] !== 'age'))
+console.log(newUser)
